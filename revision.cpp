@@ -1,10 +1,10 @@
-// #include <iostream>
-// #include <string>
-// #include <math.h>
-// #include <climits>
-// #include <vector>
-// #include <algorithm>
-// using namespace std;
+#include <iostream>
+#include <string>
+#include <math.h>
+#include <climits>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
 // void squarePattern()
 // {
@@ -281,18 +281,18 @@
 //     return true;
 // }
 
-// void finnaciSeries(int n)
-// {
-//     int a = 0;
-//     int b = 1;
-//     for (int i = 0; i < n; i++)
-//     {
-//         cout << a << " ";
-//         int next = a + b;
-//         a = b;
-//         b = next;
-//     }
-// }
+void finnaciSeries(int n)
+{
+    int a = 0;
+    int b = 1;
+    for (int i = 0; i < n; i++)
+    {
+        cout << a << " ";
+        int next = a + b;
+        a = b;
+        b = next;
+    }
+}
 
 // void decToBin(int n)
 // {
@@ -602,110 +602,415 @@
 //     cout << result << endl;
 // }
 
-// int maxProfit(vector<int> &prices)
-// {
-//     // //brute force
-//     // int maxDiff = INT_MIN;
-//     // int n = prices.size();
-//     // int st, end, diff;
-//     // for (int i = 0; i < n; i++)
-//     // {
-//     //     cout << "for i=" << i << endl;
-//     //     for (int j = i + 1; j < n; j++)
-//     //     {
-//     //         cout << "for j=" << j << endl;
-//     //         cout << "prices[" << i << "]=" << prices[i] << endl;
-//     //         cout << "prices[" << j << "]=" << prices[j] << endl;
-//     //         if (prices[i] < prices[j])
-//     //         {
-//     //             diff = prices[j] - prices[i];
-//     //             cout << "diff=" << diff << endl;
-//     //             maxDiff = max(maxDiff, diff);
-//     //             cout << "maxDiff=" << maxDiff << endl;
-//     //         }
-//     //         cout << endl;
-//     //     }
-//     // }
-//     // if (maxDiff < 0)
-//     //     return 0;
-//     // return maxDiff;
+/* int maxProfit(vector<int> &prices)
+{
+    // //brute force
+    // int maxDiff = INT_MIN;
+    // int n = prices.size();
+    // int st, end, diff;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << "for i=" << i << endl;
+    //     for (int j = i + 1; j < n; j++)
+    //     {
+    //         cout << "for j=" << j << endl;
+    //         cout << "prices[" << i << "]=" << prices[i] << endl;
+    //         cout << "prices[" << j << "]=" << prices[j] << endl;
+    //         if (prices[i] < prices[j])
+    //         {
+    //             diff = prices[j] - prices[i];
+    //             cout << "diff=" << diff << endl;
+    //             maxDiff = max(maxDiff, diff);
+    //             cout << "maxDiff=" << maxDiff << endl;
+    //         }
+    //         cout << endl;
+    //     }
+    // }
+    // if (maxDiff < 0)
+    //     return 0;
+    // return maxDiff;
 
-//     int bestBuy = prices[0];
-//     int maxProfit = 0;
-//     for (int i = 1; i < prices.size(); i++)
-//     {
-//         if (prices[i] < bestBuy)
-//         {
-//             bestBuy = min(bestBuy, prices[i]);
-//         }
-//         maxProfit = max(maxProfit, prices[i] - bestBuy);
-//     }
-//     return maxProfit;
-// }
+    int bestBuy = prices[0];
+    int maxProfit = 0;
+    for (int i = 1; i < prices.size(); i++)
+    {
+        if (prices[i] < bestBuy)
+        {
+            bestBuy = min(bestBuy, prices[i]);
+        }
+        maxProfit = max(maxProfit, prices[i] - bestBuy);
+    }
+    return maxProfit;
+}
+ */
+void printPrimeNumbers()
+{
+    int n = 10;
+    // for (int i = 2; i < n; i++)
+    // {
+    //     if (i % 2 == 0)
+    //         continue;
+    //     bool isPrime = true;
+    //     for (int j = 2; j < i; j++)
+    //     {
+    //         if (i % j == 0)
+    //         {
+    //             isPrime = false;
+    //             break;
+    //         }
+    //     }
+    //     if (isPrime)
+    //     {
+    //         cout << i << " ";
+    //     }
+    // }
 
-// int main()
-// {
-//     // patterns
-//     // squarePattern();
-//     // squareStarPattern();
-//     // charSquarePattern();
-//     // squareStarPattern2();
-//     // charSquarePattern2();
-//     // starTrianglePattern2();
-//     // TrianglePattern2();
-//     // mixPractice();
+    // Sieve of Eratosthenes
+    vector<bool> isPrime(n + 1, true);
+    // cout << isPrime.size();
+    int count = 0;
+    for (int i = 2; i < n; i++)
+    {
+        cout << "isPrime[" << i << "]= " << isPrime[i] << endl;
+        if (isPrime[i])
+        {
+            count++;
+            cout << i << " = " << i << endl;
+            for (int j = i * 2; j < n; j = j + i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
+    cout << "Total Prime numbers = " << count << endl;
+}
 
-//     // functions
-//     //  cout << checkPrimeNumm(18);
-//     //  finnaciSeries(7);
+void sumAndNoOfDigits(int n)
+{
+    int lastdigit, sum = 0, count = 0;
+    int totalDigits = (int)(log10(n) + 1);
+    cout << "Shortcut for total no.of digits = " << totalDigits << endl;
+    while (n > 0)
+    {
+        lastdigit = n % 10;
 
-//     // binary number system
-//     //  decToBin(10);
-//     //  BinaryToDec(1001);
+        cout << "lastdigit = " << lastdigit << endl;
+        count++;
+        sum = sum + lastdigit;
+        n = n / 10;
+    }
 
-//     // bitwise
-//     // cout << (6 & 10) << endl;
-//     // cout << (6 | 10) << endl;
-//     // cout << (6 ^ 10) << endl;
-//     // cout << (10 << 2) << endl;
-//     // cout << (10 >> 1) << endl;
-//     // reverseInteger(1324567);
+    cout << "Total summ = " << sum << endl;
+    cout << "count = " << count << endl;
+}
 
-//     // arrays
-//     // int arr[] = {32, 123, -20, 4433, 43, -500, -12, 4, 32, -10, -100,5000};
-//     // int length = sizeof(arr) / sizeof(arr[0]);
-//     // smallestArrayElement(arr, length);
+void decToBinary(int n)
+{
+    int power = 1, ans = 0, rem;
+    while (n > 0)
+    {
+        rem = n % 2;
+        n = n / 2;
+        ans = rem * power + ans;
+        power = power * 10;
+    }
+    cout << "Binary number is " << ans << endl;
+}
 
-//     // vectors
-//     // vector<int> v = {1, 2, 3, 4, 5};
-//     // subArray(v); //Lc 53
-//     // noofSubarraysAndMaxSum();
+void binaryToDecimal(int n)
+{
+    int ans = 0, lastdigit, factor = 1;
+    while (n > 0)
+    {
+        lastdigit = n % 10;
+        n = n / 10;
+        ans = lastdigit * factor + ans;
+        factor = factor * 2;
+    }
+    cout << "Decimal to binary is " << ans << endl;
+}
 
-//     // pair sum
-//     // vector<int> v = {2, 7, 8, 10, 11, 15};
-//     // int target = 9;
-//     // pairSum(v, target);
+void printSubArray()
+{
+    vector<int> v = {1, 2, 3, 4, 5};
+    for (int i = 0; i < v.size(); i++)
+    {
+        for (int j = i; j < v.size(); j++)
+        {
+            cout << v[j] << " ";
+        }
+        cout << endl;
+    }
+}
+void printSubArray2()
+{
+    int maxSum = INT_MIN;
+    int currentSUM = 0;
+    vector<int> v = {1, 2, 3, 4, 5};
+    // vector<int> v = {-15, -4, -5, -4, -5, -2, -10, -8};
+    // vector<int> v = {1, -4, 6, 3, 7, -10};
+    for (int i = 0; i < v.size(); i++)
+    {
+        for (int j = i; j < v.size(); j++)
+        {
+            int ans = 0;
+            for (int k = i; k <= j; k++)
+            {
+                /* code */
+                cout << v[k] << "";
+                ans = ans + v[k];
+            }
+            maxSum = max(ans, maxSum);
+            cout << " ";
+        }
+        cout << endl;
+    }
+    cout << "maxSum  = " << maxSum << endl;
+}
 
-//     // MAJORITY ELEMENT //lc-163
-//     // vector<int> v = {2, 2, 1, 1, 1, 2, 2};
-//     // vector<int> v = {3, 2, 3};
-//     // majorityElement(v);
+double power(double x, int n)
+{
+    if (n < 0)
+    {
+        x = 1 / x;
+        n = -1 * n;
+    }
+    double fac = x;
+    for (int i = 1; i < n; i++)
+    {
+        x = x * fac;
+    }
+    return x;
+}
+string reverseString(string &s)
+{
+    string ans = "";
+    reverse(s.begin(), s.end());
+    for (int i = 0; i < s.length(); i++)
+    {
+        string word = "";
+        while (s[i] != ' ' && i < s.length())
+        {
+            word = word + s[i];
+            i++;
+        }
+        reverse(word.begin(), word.end());
+        if (word.length() > 0)
+        {
+            ans = ans + word + " ";
+        }
+    }
+    return ans;
+}
 
-//     // power//LC - 50
-//     // power(2, -4);
+int stringCompression(vector<char> &c)
+{
+    string compressedString = "";
+    int n = c.size();
+    for (int i = 0; i < n - 1; i++)
+    {
+        int count = 1;
+        while (i < n - 1 && c[i] == c[i + 1])
+        {
+            count++;
+            i++;
+        }
+        compressedString = compressedString + c[i];
+        if (count > 1)
+        {
+            compressedString += to_string(count);
+        }
+        count = 1;
+    }
+    cout << "compressed string is " << compressedString << endl;
+    return compressedString.length();
+}
 
-//     // stockProbel
-//     vector<int> v = {7,6,4,3,1};
-//     cout << "The max profit is " << maxProfit(v) << endl;
-//     return 0;
-// }
+void printPrimeNumbers(int n)
+{
+    for (int i = 2; i <= n; i++)
+    {
+        bool isPrime = true;
+        if (i % 2 == 0)
+        {
+            continue;
+        }
+        for (int j = 2; j < i; j++)
+        {
+            if (i % j == 0)
+            {
+                isPrime = false;
+                continue;
+            }
+        }
+        if (isPrime)
+            cout << i << " ";
+    }
+}
 
-#include<iostream>
-int x;
+void GCD(int a, int b)
+{
+    while (a > 0 && b > 0)
+    {
+        if (a > b)
+            a = a % b;
+        else
+            b = b % a;
+    }
+    if (a == 0)
+    {
+        cout << b << endl;
+        return;
+    }
+    else
+    {
+        cout << a << endl;
+        return;
+    }
+}
+
+void print2DArrays()
+{
+    int a[3][3];
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+
+    cout << "The array values are: " << endl;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
 
 int main()
 {
-    bool b=1;
-    std::cout << b;
+    // patterns
+    // squarePattern();
+    // squareStarPattern();
+    // charSquarePattern();
+    // squareStarPattern2();
+    // charSquarePattern2();
+    // starTrianglePattern2();
+    // TrianglePattern2();
+    // mixPractice();
+
+    // functions
+    //  cout << checkPrimeNumm(18);
+    //  finnaciSeries(7);
+
+    // binary number system
+    //  decToBin(10);
+    //  BinaryToDec(1001);
+
+    // bitwise
+    // cout << (6 & 10) << endl;
+    // cout << (6 | 10) << endl;
+    // cout << (6 ^ 10) << endl;
+    // cout << (10 << 2) << endl;
+    // cout << (10 >> 1) << endl;
+    // reverseInteger(1324567);
+
+    // arrays
+    // int arr[] = {32, 123, -20, 4433, 43, -500, -12, 4, 32, -10, -100,5000};
+    // int length = sizeof(arr) / sizeof(arr[0]);
+    // smallestArrayElement(arr, length);
+
+    // vectors
+    // vector<int> v = {1, 2, 3, 4, 5};
+    // subArray(v); //Lc 53
+    // noofSubarraysAndMaxSum();
+
+    // pair sum
+    // vector<int> v = {2, 7, 8, 10, 11, 15};
+    // int target = 9;
+    // pairSum(v, target);
+
+    // MAJORITY ELEMENT //lc-163
+    // vector<int> v = {2, 2, 1, 1, 1, 2, 2};
+    // vector<int> v = {3, 2, 3};
+    // majorityElement(v);
+
+    // power//LC - 50
+    // power(2, -4);
+
+    // stockProbel
+    // vector<int> v = {7,6,4,3,1};
+    // cout << "The max profit is " << maxProfit(v) << endl;
+
+    // maths for DSA
+    // printPrimeNumbers(); // lot of time to think about the logic
+    // sumAndNoOfDigits(3586);
+
+    // gap
+    // binaryBunberSystem
+    // int n = 21;
+    // decToBinary(12);
+    // binaryToDecimal(1100);
+
+    // printSubArray();
+    // printSubArray2();
+
+    // int n = 10;
+    // double x = 2;
+    // cout << "power is " << power(x, n);
+
+    // reverseWordsInString
+    // string s = "the sky is blue";
+    // cout << reverseString(s);
+
+    // stringCompression
+    // vector<char> chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
+    // vector<char> chars = {'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'};
+    // cout << stringCompression(chars);
+
+    // int n = 100;
+    // printPrimeNumbers(n);
+
+    // GCD
+    /* int a = 30, b = 35;
+    GCD(a, b); */
+
+    // 2d arrays
+    print2DArrays();
+
     return 0;
 }
+
+/* #include <iostream>
+using namespace std;
+
+class Base
+{
+public:
+    virtual void show() const
+    {
+        cout << "Base" << endl;
+    }
+};
+class Derived : public Base
+{
+public:
+    void show() const override
+    {
+        cout << "Derived" << endl;
+    }
+};
+
+int main()
+{
+    Base *b = new Derived();
+    b->show();
+
+    Derived d;
+    // d.show();
+    return 0;
+} */

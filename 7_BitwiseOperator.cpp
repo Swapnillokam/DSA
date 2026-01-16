@@ -64,9 +64,9 @@ int reverseNumber()
 
 int main()
 {
-    // bitwiseOperators();
+    bitwiseOperators();
     // powerOfTwo() ? cout << "Number is a power of 2" : cout << "Number is not a power of 2";
-    int reversedNumber = reverseNumber();
-    cout << "The number after reversing is " << reversedNumber << endl;
+    // int reversedNumber = reverseNumber();
+    // cout << "The number after reversing is " << reversedNumber << endl;
     return 0;
 }

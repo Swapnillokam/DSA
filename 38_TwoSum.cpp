@@ -117,7 +117,7 @@ int main()
     vector<int> v = {5, 2, 11, 7, 15};
     int target = 9;
     // cout << sumOfTwoElements(v, target);
-    // sumOfTwoElements2(v, target);
+    sumOfTwoElements2(v, target);
 
     vector<vector<int>> v1 = {
         {9, 1, 7},

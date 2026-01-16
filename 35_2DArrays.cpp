@@ -110,44 +110,45 @@ int _2DSumOfDiagonalsOptimize(int a[][3], int rows, int cols)
 
 int main()
 {
-    // _2dArrays();
+    _2dArrays();
 
-    int a[4][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9},
-        {10, 11, 12}};
+    // int a[4][3] = {
+    //     {1, 2, 3},
+    //     {4, 5, 6},
+    //     {7, 8, 9},
+    //     {10, 11, 12}};
 
     // cout << linearSearch(a, 4, 3, 12) << endl;
-    // pair<int, int> p = _2DlinearSearch(a, 4, 3, 12);
-    // cout << "{" << p.first << "," << p.second << "}" << endl;
+    // // pair<int, int> p = _2DlinearSearch(a, 4, 3, 12);
+    // // cout << "{" << p.first << "," << p.second << "}" << endl;
 
-    // cout << "The max sum of a row in a 2d array is " << maxRowSum2D(a, 4, 3) << endl;
+    // // cout << "The max sum of a row in a 2d array is " << maxRowSum2D(a, 4, 3) << endl;
 
-    int b[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}};
+    // int b[3][3] = {
+    //     {1, 2, 3},
+    //     {4, 5, 6},
+    //     {7, 8, 9}};
 
-    // std::cout << "The sum of diagonals of a 2d array is " << _2DSumOfDiagonals(b, 3, 3) << endl;
-    // std::cout << "The sum of diagonals of a 2d array is " << _2DSumOfDiagonalsOptimize(b, 3, 3) << endl;
+    // // std::cout << "The sum of diagonals of a 2d array is " << _2DSumOfDiagonals(b, 3, 3) << endl;
+    // // std::cout << "The sum of diagonals of a 2d array is " << _2DSumOfDiagonalsOptimize(b, 3, 3) << endl;
 
-    vector<vector<int>> v = {
-        {1, 2, 3},
-        {4, 5, 6, 8, 10},
-        {7, 8, 9}};
+    // vector<vector<int>> v = {
+    //     {1, 2, 3},
+    //     {4, 5, 6, 8, 10},
+    //     {7, 8, 9}};
 
-    // rows = v.size();
-    // colums = v[i].size();
+    // // rows = v.size();
+    // // colums = v[i].size();
 
-    cout << "ELements of the 2d vector are" << endl;
-    for (int i = 0; i < v.size(); i++)
-    {
-        for (int j = 0; j < v[i].size(); j++)
-        {
-            cout << v[i][j] << " ";
-        }
-        cout << endl;
-    }
+    // cout << "ELements of the 2d vector are" << endl;
+    // for (int i = 0; i < v.size(); i++)
+    // {
+    //     for (int j = 0; j < v[i].size(); j++)
+    //     {
+    //         cout << v[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+    
     return 0;
 }

@@ -3,9 +3,9 @@ using namespace std;
 
 int DecToBinary()
 {
-    int decNum, rem, ans, power;
-    cout << "Enter the decimal number\n";
-    cin >> decNum;
+    int decNum = 12, rem, ans, power;
+    // cout << "Enter the decimal number\n";
+    // cin >> decNum;
     power = 1;
     ans = 0;
 
@@ -40,7 +40,7 @@ int main()
 {
     int decToBinary = DecToBinary();
     cout << "The binary number for the given decimal number " << decToBinary << endl;
-    int binaryToDec = BinaryToDec();
-    cout << "The decimal number for the given binary number " << binaryToDec << endl;
+    // int binaryToDec = BinaryToDec();
+    // cout << "The decimal number for the given binary number " << binaryToDec << endl;
     return 0;
 }

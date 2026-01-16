@@ -15,6 +15,9 @@ void Characters()
     char str[100];
     cout << "Enter string" << endl;
     cin >> str;
+    // problem with cin in character arrays
+    //  if you give input "hello world" ,cin only takes hello(avoids after the voidspaces)
+    // if you want to input the entire line along with void spaces you have to use cin.getline(string,size of string,delimiter?(optional))
     int len = 0;
     // cin.getline(str, 100);
     // cin.getline(str, 100, '.');  // not working
@@ -45,6 +48,8 @@ void strings()
     // char c[] = "Swapnil lokam";
     // // c = "DSA";   //char are non modifiable unlike strings
 
+    // string are modifiable but charracter arrays are not modifiable
+
     // string s1 = "Swapnil";
     // string s2 = " Lokam";
 
@@ -52,11 +57,21 @@ void strings()
     // cout << s2.length() << endl;
     // cout << s1 + s2;
 
+    // to calculate length of string
+    // for character arrays  - strlen(str)
+    // for strings - str.length()
+
     string s;
     cout << "Enter the string" << endl;
     // cin >> s;
     getline(cin, s);
-    
+
+    // problem with cin in "strings"
+    //  if you give input "hello world" ,cin only takes hello(avoids after the voidspaces)
+    // if you want to input the entire line along with void spaces you have to use getline(cin, s,delimiter?(optional))
+
+    // for character arrays   -> cin.getline(str, 100);
+
     // for (int i = 0; i < s.length(); i++)
     // {
     //     if (s[i] == ' ')
@@ -95,19 +110,24 @@ void reverseChar(vector<char> &c)
 void reverseString()
 {
     string s = "Swapnil";
-    reverse(s.begin(), s.end()); // iterators
-    cout << s;
+    // cout << *(s.begin()) << endl;
+    // cout << *(s.end()-1) << endl;
+    reverse(s.rbegin(), s.rend()); // iterators
+    cout << s << endl;
+    sort(s.begin(), s.end()); // iterators
+    cout << s << endl;
 }
 
 bool checkStringPalindrome()
 {
-    string s;
-    cout << "Enter string to check the Palindrome" << endl;
-    cin >> s;
-    int st=0,end= s.length()-1;
-    while (st<end)
+    // string s = "nayan";
+    string s = "Swapnil";
+    // cout << "Enter string to check the Palindrome" << endl;
+    // cin >> s;
+    int st = 0, end = s.length() - 1;
+    while (st < end)
     {
-        if(s[st]!=s[end])
+        if (s[st] != s[end])
         {
             return false;
         }
@@ -121,10 +141,10 @@ int main()
 
     // Characters();
     // strings();
-    vector<char> c = {'S', 'W', 'A'};
+    // vector<char> c = {'S', 'W', 'A'};
     // reverseChar(c);
-    // reverseString();
-    cout << checkStringPalindrome();
-    
+    reverseString();
+    // cout << checkStringPalindrome();
+
     return 0;
 }

@@ -28,9 +28,9 @@ void subArray()
 // leetcode 53
 int maxSubarraySum()
 {
-    int a[] = {1, -4, 6, 3, 7, -10};
+    // int a[] = {1, -4, 6, 3, 7, -10};
     // int a[] = {3, -4, 5, 4, -1, 7, -8};
-    // int a[] = {1, 2, 3, 4, 5};
+    int a[] = {1, 2, 3, 4, 5};
     int size = sizeof(a) / sizeof(a[0]);
     int maxSum = INT_MIN;
 

@@ -58,7 +58,7 @@ int main()
     // }
 
     vector<int> vec = {1, 2, 1, 3, 2};
-    cout << "unique value is " << uniqueValue(vec) << endl;
+    // cout << "unique value is " << uniqueValue(vec) << endl;
     subArray();
     return 0;
 }

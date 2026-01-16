@@ -162,12 +162,12 @@ int main()
     // cout << int(log10(3568) + 1) << endl;
 
     // checkArmstrong(153);
-    // cout << GCD(20, 24);
+    cout << GCD(20, 24);
     // cout << GCD_ByEuclids(6, 12);
     // cout << recursiveEuclidGCD(20, 24);
     // cout << LCM(20, 28);
     // cout << reverseNumber(4537);
-    cout << PalindromeNumber(121);
+    // cout << PalindromeNumber(121);
 
     return 0;
 }

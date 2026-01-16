@@ -2,6 +2,7 @@
 using namespace std;
 
 // leetcode Q 125
+// aplhanumeric -> (1->9,A->Z,a->z)
 bool isAlphaNumeric(char c)
 {
     if ((c >= '0' && c <= '9') || (tolower(c) >= 'a' && tolower(c) <= 'z'))
@@ -36,7 +37,7 @@ bool checkPalindrome(string &s)
     }
     return true;
 }
-
+ 
 // leetcode Q 1910
 string removeAllPartOccurrencesInString(string &s, string part)
 {
@@ -56,6 +57,6 @@ int main()
     
     // string s = "daabcbaabcbc", part = "abc";
     string s = "axxxxyyyyb", part = "xy";
-    cout<<removeAllPartOccurrencesInString(s,part);
+    cout<<removeAllPartOccurrencesInString(s,part); 
     return 0;
 }
