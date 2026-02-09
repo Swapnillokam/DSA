@@ -15,6 +15,7 @@ int search(vector<int> &vec, int target)
         {
             return mid;
         }
+        // note in rotated sorted array, remember one side of the aray is always sorted
         if (vec[st] <= vec[mid]) // checks if left side is sorted
         {
             if (vec[st] <= target && target <= vec[mid])

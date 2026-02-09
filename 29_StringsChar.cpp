@@ -7,34 +7,34 @@ using namespace std;
 void Characters()
 {
     /* code */
-    // char str[] = {'a', 'b', 'c','\0'};
+    // char ch[] = {'a', 'b', 'c','\0'};
     // char str[] = "collage";
-    // cout << str << endl;
-    // cout << strlen(str) << endl;
+    // cout << ch << endl;
+    // cout << strlen(ch) << endl;
 
-    char str[100];
-    cout << "Enter string" << endl;
-    cin >> str;
-    // problem with cin in character arrays
-    //  if you give input "hello world" ,cin only takes hello(avoids after the voidspaces)
-    // if you want to input the entire line along with void spaces you have to use cin.getline(string,size of string,delimiter?(optional))
-    int len = 0;
-    // cin.getline(str, 100);
-    // cin.getline(str, 100, '.');  // not working
-    // for (char ch : str)
+    // char ch[100];
+    // cout << "Enter string" << endl;
+    // cin >> ch;
+    // // problem with cin in character arrays
+    // //  if you give input "hello world" ,cin only takes hello(avoids after the voidspaces)
+    // // if you want to input the entire line along with void spaces you have to use cin.getline(string,size of string,delimiter?(optional))
+    // int len = 0;
+    // cin.getline(ch, 100);
+    // cin.getline(ch, 100, '.');  // not working
+    // for (char ch : ch)
     // {
     //     cout << ch << " ";
     //     len++;
     // }
 
-    for (int i = 0; i < str[i] != '\0'; i++)
-    {
-        cout << str[i] << " ";
-        len++;
-    }
-    cout << endl
-         << len;
-    // cout << str << endl;
+    // for (int i = 0; i < ch[i] != '\0'; i++)
+    // {
+    //     cout << ch[i] << " ";
+    //     len++;
+    // }
+    // cout << endl
+    //      << len;
+    // cout << ch << endl;
 }
 
 void strings()

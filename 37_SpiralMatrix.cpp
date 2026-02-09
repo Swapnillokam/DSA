@@ -7,43 +7,43 @@ vector<int> spiralMatrix(vector<vector<int>> &v)
 {
     int r = v.size();
     int c = v[0].size();
-    int sr = 0, sc = 0;
-    int er = r - 1, ec = c - 1;
+    int topRow = 0, leftCol = 0;
+    int bottomROw = r - 1, rightCol = c - 1;
     vector<int> ans;
-    while (sr <= er && sc <= ec)
+    while (topRow <= bottomROw && leftCol <= rightCol)
     {
         // top
-        for (int i = sc; i <= ec; i++)
+        for (int i = leftCol; i <= rightCol; i++)
         {
-            ans.push_back(v[sr][i]);
+            ans.push_back(v[topRow][i]);
         }
         // right
-        for (int i = sr + 1; i <= er; i++)
+        for (int i = topRow + 1; i <= bottomROw; i++)
         {
-            ans.push_back(v[i][ec]);
+            ans.push_back(v[i][rightCol]);
         }
         // bottom
-        for (int i = ec - 1; i >= sc; i--)
+        for (int i = rightCol - 1; i >= leftCol; i--)
         {
-            if (sr == er)
+            if (topRow == bottomROw)
             {
                 break;
             }
-            ans.push_back(v[er][i]);
+            ans.push_back(v[bottomROw][i]);
         }
         // left
-        for (int i = er - 1; i >= sr + 1; i--)
+        for (int i = bottomROw - 1; i >= topRow + 1; i--)
         {
-            if (sc == ec)
+            if (leftCol == rightCol)
             {
                 break;
             }
-            ans.push_back(v[i][sc]);
+            ans.push_back(v[i][leftCol]);
         }
-        sr++;
-        ec--;
-        er--;
-        sc++;
+        topRow++;
+        rightCol--;
+        bottomROw--;
+        leftCol++;
     }
     return ans;
 }

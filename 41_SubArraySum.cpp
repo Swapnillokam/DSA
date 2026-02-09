@@ -3,7 +3,7 @@
 #include <unordered_map>
 
 using namespace std;
-
+// lt q 560
 // brute force appraoch
 // 0(n3)
 int numberOfSubarrays(vector<int> &v, int target)
@@ -45,6 +45,7 @@ int numberOfSubarraysOptimal(vector<int> &v, int target)
         int sum = 0;
         for (int j = i; j < v.size(); j++)
         {
+            cout << v[j];
             sum += v[j];
             if (sum == target)
             {
@@ -52,6 +53,7 @@ int numberOfSubarraysOptimal(vector<int> &v, int target)
                 continue;
             }
         }
+        cout << " ";
     }
     return count;
 }
@@ -99,7 +101,7 @@ int main()
     vector<int> v = {9, 4, 20, 3, 10, 5};
     int target = 33;
     // cout << numberOfSubarrays(v, target);
-    // cout << numberOfSubarraysOptimal(v, target);
-    cout << numberOfSubarraysOptimized(v, target);
+    cout << numberOfSubarraysOptimal(v, target);
+    // cout << numberOfSubarraysOptimized(v, target);
     return 0;
 }

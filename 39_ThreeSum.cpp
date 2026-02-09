@@ -18,6 +18,29 @@ void print2dVector(vector<vector<int>> &v)
     }
 }
 
+/* 🚨 Problems in YOUR current code
+❌ 1. unordered_set<vector<int>> ❌
+
+This will NOT compile in standard C++.
+
+Why?
+
+unordered_set needs a hash function
+
+vector<int> does not have a default hash
+
+👉 Interview point:
+
+You cannot store vector<int> directly in unordered_set without a custom hash.
+
+✅ Fix options:
+
+Use set<vector<int>> (ordered, slower)
+
+OR write a custom hash (advanced)
+
+OR avoid sets completely (best solution) */
+
 // TC - 0(n3 * log(n))
 // gives - TLE
 vector<vector<int>> threeSum(vector<int> &v)
@@ -115,9 +138,6 @@ vector<vector<int>> threeSum3(vector<int> &v)
     print2dVector(ans);
     return ans;
 }
-
-
-
 
 int main()
 {

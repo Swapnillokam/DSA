@@ -115,7 +115,12 @@ int main()
     thread t2(function2);
     t1.join();
     t2.join();
-    cout<<"Main Ended "<<endl; */
+    cout<<"Main Ended "<<endl;
+    //output
+    //Main started 
+    // Called by thread t2
+    // Called by thread t1
+    // Main Ended  */
 
     // video 7 - passing parameters to thread
     /* int x = 5, y = 10;
@@ -147,7 +152,10 @@ int main()
     end_time = chrono::system_clock::now();
     t1.join();
     t2.join();
-    cout << "Time taken by multithreading execution " << (end_time - start_time).count() << endl; */
+    cout << "Time taken by multithreading execution " << (end_time - start_time).count() << endl;
+    //output
+    // Time taken by sequential execution 232154800
+    // Time taken by multithreading execution 996900 */
 
     // video 10 -> Practical implementation of critical section problem using c++ || multithreading for HFT systems
     /* thread T[5];
@@ -174,7 +182,17 @@ int main()
         T[i] = thread(&sampleThread);
         cout << "thread number " << i << endl;
         T[i].join();
-    } */
+    } 
+    //output 
+    //thread number 1
+    //sharedVarible = 1
+    //thread number 2
+    //sharedVarible = 2
+    //thread number 3
+    //sharedVarible = 3
+    //thread number 4
+    //sharedVarible = 4
+    */
 
     // video 11-> critical section or race contition //check snap in one note
     //  video 12 -> mutex -> to avoid critical sectio problems

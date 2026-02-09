@@ -85,7 +85,7 @@ int main()
     cout << *d << endl;  // gives garbage value since d is deleted and not null
     cout << *d << endl; // gives garbage value since d is deleted and not null */
 
-    // // shared Pointer -> no need to delete deletes automatically once the variable goes out of the scope
+    // // shared Pointer -> no need to delete, deletes automatically once the variable goes out of the scope
     /* shared_ptr<int> e = sharedPointersGetValue(); // or
     // auto e = sharedPointersGetValue();
     cout << *e << endl;
@@ -100,17 +100,17 @@ int main()
  */
 
     // unique Pointer -> no need to delete deletes automatically once the variable goes out of the scope
-    /* unique_ptr<int> g = uniquePointersGetValue();  //or
-    // auto e = sharedPointersGetValue();
-    cout << *g << endl;
-    cout << *g << endl;
-    // auto h = g;   // not possible
-    auto h = move(g);   // moving hte pointer and hence g pointer is moved to h and g is not holding any pointer
-    cout << *h << endl;
-    cout << *g << endl;  // check g */
+    /*  unique_ptr<int> g = uniquePointersGetValue();  //or
+     // auto e = sharedPointersGetValue();
+     cout << *g << endl;
+     cout << *g << endl;
+     // auto h = g;   // not possible
+     auto h = move(g);   // moving hte pointer and hence g pointer is moved to h and g is not holding any pointer
+     cout << *h << endl;
+     cout << *g << endl;  // check g */
 
     // weak pointer
-    /* shared_ptr<Test> t1(new Test());
+    shared_ptr<Test> t1(new Test());
     // shared_ptr<Test> t1 = new Test();  // wrong syntax
     shared_ptr<Test> t2 = t1; // or
     // shared_ptr<Test> t2(t1);
@@ -118,28 +118,33 @@ int main()
     weak_ptr<Test> w1 = t1;
     cout << w1.use_count() << endl;
     auto ptr = w1.lock(); // lock() retuens a refernce to shared pointer // you can also use expired() returns boolean
+    cout << "ptr = " << ptr << endl;
+    cout << "t1 = " << t1 << endl;
+    // cout << "*t1 = " << *t1 << endl;  //gives error 
+    // cout << "w1 = " << w1 << endl;  // throws error
     if (ptr)
     {
         cout << "weak pointer exists" << endl; // called before destructor
     }
-    t1.reset();
+    t1.reset();   // becomes nullPtr
     ptr.reset();
     cout << w1.use_count() << endl;
     cout << t1.use_count() << endl;
+    cout << "t2 = " << t2 << endl;
     auto ptr2 = w1.lock();
     if (!ptr2)
     {
         cout << "ptr2 is deleted" << endl;
-    } */
+    }
 
     // shared pointer circular dependancy issue
-    shared_ptr<Test> t1(new Test);
+    /* shared_ptr<Test> t1(new Test);
     shared_ptr<Test> t2(new Test);
     t1->next = t2;
     t2->next = t1;
     cout << " t1.use_count() = " << t1.use_count() << endl;
     cout << " t2.use_count() = " << t2.use_count() << endl;
     //issue -> (uncomment shared pointer in class and commed weak pointer)note run the program and check destructor never gets called, hence memory leak
-    //create the weak pointer in class for next object
+    //create the weak pointer in class for next object */
     return 0;
 }

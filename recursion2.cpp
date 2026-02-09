@@ -124,7 +124,7 @@ int recMinimumElementArray(int a[], int size)
     while (st <= end)
     {
         if (s[st] != s[end])
-            return false;
+            return false; 
         return true;
     }
 } */

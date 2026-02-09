@@ -159,7 +159,7 @@ int main()
     // digits(3568);
 
     // Shortcut to find no.of digits in a numbers -> (log10(n)+1)
-    // cout << int(log10(3568) + 1) << endl;
+    cout << int(log10(3568) + 1) << endl;
 
     // checkArmstrong(153);
     cout << GCD(20, 24);
