@@ -7,23 +7,23 @@ using namespace std;
 
 // HEAD -> points to the starting address of linked list
 
-class Node
+class ListNode
 {
 public:
-    int value;
-    Node *next;
+    int val;
+    ListNode *next;
 
-    Node(int a)
+    ListNode(int a)
     {
-        value = a;
+        val = a;
         next = NULL;
     }
 };
 
 class List
 {
-    Node *Head;
-    Node *Tail;
+    ListNode *Head;
+    ListNode *Tail;
 
 public:
     List()
@@ -34,11 +34,11 @@ public:
     {
         if (Head == NULL)
         {
-            Head = Tail = new Node(num);
+            Head = Tail = new ListNode(num);
         }
         else
         {
-            Node *temp = new Node(num);
+            ListNode *temp = new ListNode(num);
             temp->next = Head;
             Head = temp;
         }
@@ -52,13 +52,13 @@ public:
         // {
         //     Tail = Tail->next;
         // }
-        Node *newNode;
+        ListNode *newNode;
         if (Head == NULL)
         {
             Head = Tail = newNode;
         }
         {
-            Node *newNode = new Node(num);
+            ListNode *newNode = new ListNode(num);
             Tail->next = newNode;
             Tail = newNode;
         }
@@ -69,7 +69,7 @@ public:
         if (!Head)
             return;
 
-        Node *temp = Head;
+        ListNode *temp = Head;
         Head = temp->next;
         temp->next = NULL;
         delete temp;
@@ -90,7 +90,7 @@ public:
             return;
         }
 
-        Node *temp = Head;
+        ListNode *temp = Head;
         // while (temp->next->next == NULL) // or
         while (temp->next != Tail)
         {
@@ -103,8 +103,8 @@ public:
 
     void insertAt(int value, int pos)
     {
-        Node *temp = Head;
-        Node *temp2 = new Node(3);
+        ListNode *temp = Head;
+        ListNode *temp2 = new ListNode(3);
         for (int i = 0; i < pos - 1; i++)
         {
             temp = temp->next;
@@ -116,10 +116,10 @@ public:
 
     void printAll()
     {
-        Node *temp = Head;
+        ListNode *temp = Head;
         while (temp != NULL)
         {
-            cout << temp->value << " ";
+            cout << temp->val << " ";
             temp = temp->next;
         }
     }

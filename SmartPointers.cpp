@@ -54,8 +54,8 @@ public:
     Test() { cout << "construtor called" << endl; }
     ~Test() { cout << "desstrutor called" << endl; }
     // for circular dependancy issue in shared pointer
-    // shared_ptr<Test> next;
-    weak_ptr<Test> next;
+    shared_ptr<Test> next;
+    // weak_ptr<Test> next;
 };
 
 int main()
@@ -100,17 +100,18 @@ int main()
  */
 
     // unique Pointer -> no need to delete deletes automatically once the variable goes out of the scope
-    /*  unique_ptr<int> g = uniquePointersGetValue();  //or
-     // auto e = sharedPointersGetValue();
-     cout << *g << endl;
-     cout << *g << endl;
-     // auto h = g;   // not possible
-     auto h = move(g);   // moving hte pointer and hence g pointer is moved to h and g is not holding any pointer
-     cout << *h << endl;
-     cout << *g << endl;  // check g */
+    /* unique_ptr<int> g = uniquePointersGetValue(); // or
+    // auto e = sharedPointersGetValue();
+    cout << "*g = " << *g << endl;
+    cout << "*g  = " << *g << endl;
+    // auto h = g;   // not possible
+    auto h = move(g); // moving hte pointer and hence g pointer is moved to h and g is not holding any pointer
+    cout << "*h  = " << *h << endl;
+    cout << "*g  = " << *g << endl; // check g */
 
     // weak pointer
-    shared_ptr<Test> t1(new Test());
+    /* // shared_ptr<Test> t1(new Test());
+    shared_ptr<Test> t1 = make_unique<Test>();
     // shared_ptr<Test> t1 = new Test();  // wrong syntax
     shared_ptr<Test> t2 = t1; // or
     // shared_ptr<Test> t2(t1);
@@ -120,7 +121,7 @@ int main()
     auto ptr = w1.lock(); // lock() retuens a refernce to shared pointer // you can also use expired() returns boolean
     cout << "ptr = " << ptr << endl;
     cout << "t1 = " << t1 << endl;
-    // cout << "*t1 = " << *t1 << endl;  //gives error 
+    // cout << "*t1 = " << *t1 << endl;  //gives error
     // cout << "w1 = " << w1 << endl;  // throws error
     if (ptr)
     {
@@ -135,16 +136,30 @@ int main()
     if (!ptr2)
     {
         cout << "ptr2 is deleted" << endl;
-    }
+    } */
 
     // shared pointer circular dependancy issue
-    /* shared_ptr<Test> t1(new Test);
-    shared_ptr<Test> t2(new Test);
+    /* // shared_ptr<Test> t1(new Test);
+    // shared_ptr<Test> t2(new Test);
+    shared_ptr<Test> t1 = make_shared<Test>();
+    shared_ptr<Test> t2 = make_shared<Test>();
     t1->next = t2;
     t2->next = t1;
     cout << " t1.use_count() = " << t1.use_count() << endl;
     cout << " t2.use_count() = " << t2.use_count() << endl;
-    //issue -> (uncomment shared pointer in class and commed weak pointer)note run the program and check destructor never gets called, hence memory leak
-    //create the weak pointer in class for next object */
+    // issue -> (uncomment shared pointer in class and commed weak pointer)note run the program and check destructor never gets called, hence memory leak
+    // create the weak pointer in class for next object */
+
+    // smart pointers with arrays and vector
+    /* auto arr = make_unique<int[]>(5);
+    for (int i = 0; i < 5; i++)
+    {
+        arr[i] = i * 10;
+    }
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << endl;
+    }
+ */
     return 0;
 }

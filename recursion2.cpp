@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -124,7 +125,7 @@ int recMinimumElementArray(int a[], int size)
     while (st <= end)
     {
         if (s[st] != s[end])
-            return false; 
+            return false;
         return true;
     }
 } */
@@ -224,6 +225,170 @@ int recTwoPointerSumTarget(int a[], int st, int end, int target)
         return recBinarySumTarget(a, st, mid - 1, target);
 } */
 
+void merge(vector<int> &v, int st, int mid, int end)
+{
+    vector<int> sortVec;
+    // int index = 0;
+    int left = st;
+    int right = mid + 1;
+    // int a = v[left];
+    // int c = v[mid];
+    // int b = v[right];
+
+    while (left <= mid && right <= end)
+    {
+        // int a = v[left];
+        // int b = v[right];
+        if (v[left] <= v[right])
+        {
+            sortVec.push_back(v[left]);
+            left++;
+        }
+        else
+        {
+            sortVec.push_back(v[right]);
+            right++;
+        }
+    }
+    while (left <= mid)
+    {
+        sortVec.push_back(v[left]);
+        left++;
+    }
+    while (right <= end)
+    {
+        sortVec.push_back(v[right]);
+        right++;
+    }
+
+    for (int i = 0; i < sortVec.size(); i++)
+    {
+        // int insert = sortVec[i];
+        v[st + i] = sortVec[i]; // note -> v[st+i], otherwise v[st] gives incorrect results
+    }
+}
+
+// 0(nlogn) - sorting algo
+void recMergerSort(vector<int> &v, int st, int end)
+{
+    if (st == end)
+        return;
+    int mid = st + (end - st) / 2;
+    // left
+    // int a = v[st];
+    // int b = v[mid];
+    // int c = v[end];
+    recMergerSort(v, st, mid);
+    // right
+    // int d = v[mid + 1];
+    recMergerSort(v, mid + 1, end);
+    merge(v, st, mid, end);
+}
+
+int pivotPos(vector<int> &v, int start, int end)
+{
+    int pos = start;
+    for (int i = start; i <= end; i++)
+    {
+        if (v[i] <= v[end])
+        {
+            swap(v[i], v[pos]);
+            pos++;
+        }
+    }
+    return pos - 1;
+}
+// Time Complexity
+// Avd case - 0(nlogn)
+// worst case - 0(n2)
+void recQuickSort(vector<int> &v, int start, int end)
+{
+    if (start >= end)
+        return;
+    int pivot = pivotPos(v, start, end);
+    // left
+    recQuickSort(v, start, pivot - 1);
+    // right
+    recQuickSort(v, pivot + 1, end);
+}
+
+// L-61 //subsequence recursion
+// time complexity - > O(2^n)
+// space complexity - > O(2^n*n + n2) => 0(2^n)
+void recArraySubsequence(vector<int> &v, int index, int n, vector<int> &temp, vector<vector<int>> &ans)
+{
+    if (index == n)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    recArraySubsequence(v, index + 1, n, temp, ans);
+    temp.push_back(v[index]);
+    recArraySubsequence(v, index + 1, n, temp, ans);
+    temp.pop_back();
+}
+
+void recStringSubsequence(string &s, int index, int length, string &temp, vector<string> &ans)
+{
+    if (index == length)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    recStringSubsequence(s, index + 1, length, temp, ans);
+    temp.push_back(s[index]);
+    recStringSubsequence(s, index + 1, length, temp, ans);
+    temp.pop_back();
+}
+
+void checkParanthesis(int n, int left, int right, vector<string> &ans, string temp)
+{
+    if (left + right == 2 * n)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    if (left < n)
+    {
+        temp.push_back('(');
+        checkParanthesis(n, left + 1, right, ans, temp);
+        temp.pop_back();
+    }
+    if (right < left)
+    {
+        temp.push_back(')');
+        checkParanthesis(n, left, right + 1, ans, temp);
+        temp.pop_back();
+    }
+}
+
+//lec - 62 - check the second part to understand the debugging in recurions - 50:00
+//recSubset(arr, 3, 0, ans, temp);
+void recSubset(int arr[], int n, int index, vector<vector<int>> &ans, vector<int> &temp)
+{
+    if (index == n)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    recSubset(arr, n, index + 1, ans, temp);
+    temp.push_back(arr[index]);
+    recSubset(arr, n, index + 1, ans, temp);
+    temp.pop_back();
+}
+
+//recSubsetSum(arr, 3, 0, 0);
+void recSubsetSum(int arr[], int n, int index, int sum)
+{
+    if (index == n)
+    {
+        cout << sum << endl;
+        return;
+    }
+    recSubsetSum(arr, n, index + 1, sum);
+    recSubsetSum(arr, n, index + 1, sum + arr[index]);
+}
+
 int main()
 {
     // cout << "Enter number\n";
@@ -236,10 +401,10 @@ int main()
     // cout << pow(4, 3) << endl;
     // cout << sumOfSquareOfN_NaturalNumber(2) << endl;
     // cout << nthFibonnaciSeries(6) << endl;
-    cout << fibonnaciSeriesWithLoop(8) << endl;
+    // cout << fibonnaciSeriesWithLoop(8) << endl;
     // cout << gcdRecursion(15, 120) << endl;
 
-    int arr[] = {7, 2, 4, -1, -6};
+    // int arr[] = {7, 2, 4, -1, -6};
     // recArray(arr, 6);
     // cout << recArraySum(arr, 6) << endl;
     // cout << recMinimumElementArray(arr, 6) << endl;
@@ -254,7 +419,7 @@ int main()
     // cout << (int)('Z') << endl;
 
     // tried for verification
-    char c = 'Z';
+    // char c = 'Z';
     // cout << char(tolower(c)) << endl;   inbuilt
     //  toLower(c);
     // cout << char(toLower(c)) << endl; // userdefined
@@ -269,6 +434,76 @@ int main()
     // int a[] = {3, 8, 11, 15, 20, 22};
     // int target = 15;
     // cout << "target is at index " << recBinarySumTarget(a, 0, 4, target) << endl;
+
+    // recMerge sort
+    /* vector<int> v = {6, 3, 1, 2, 8, 9, 5, 7, 4, 10};
+    recMergerSort(v, 0, 9);
+    for (int i : v)
+    {
+        std::cout << i << " ";
+    } */
+
+    // Quick sort
+    /* vector<int> v = {6, 2, 5, 1, 4, 2, 3};
+    recQuickSort(v, 0, v.size() - 1);
+    for (int i : v)
+    {
+        std::cout << i << " ";
+    } */
+
+    // subsequence
+    /* vector<int> temp;
+    vector<vector<int>> ans;
+    vector<int> v = {1, 2, 3};
+    recArraySubsequence(v, 0, 3, temp, ans);
+    for (vector<int> temp : ans)
+    {
+        for (int i : temp)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+    } */
+    /* string temp;
+    vector<string> ans;
+    string v = "abc";
+    recStringSubsequence(v, 0, 3, temp, ans);
+    for (string temp: ans)
+    {
+        for (char i : temp)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+    } */
+
+    /* int n = 2;
+    vector<string> ans;
+    string temp;
+    checkParanthesis(n, 0, 0, ans, temp);
+    for (string temp : ans)
+    {
+
+        for (char i : temp)
+        {
+            cout << i;
+        }
+        cout << endl;
+    } */
+
+    int arr[] = {3, 4, 5};
+    vector<vector<int>> ans;
+    vector<int> temp;
+    recSubset(arr, 3, 0, ans, temp);
+    for (vector<int> temp : ans)
+    {
+        for (int i : temp)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+    }
+    recSubsetSum(arr, 3, 0, 0);
 
     return 0;
 }

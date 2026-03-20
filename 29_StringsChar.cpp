@@ -112,9 +112,11 @@ void reverseString()
     string s = "Swapnil";
     // cout << *(s.begin()) << endl;
     // cout << *(s.end()-1) << endl;
-    reverse(s.rbegin(), s.rend()); // iterators
-    cout << s << endl;
-    sort(s.begin(), s.end()); // iterators
+    // reverse(s.rbegin(), s.rend()); // iterators
+    // cout << s << endl;
+    // sort(s.begin(), s.end()); // iterators
+    // cout << s << endl;
+    reverse(s.begin(),s.end());
     cout << s << endl;
 }
 
