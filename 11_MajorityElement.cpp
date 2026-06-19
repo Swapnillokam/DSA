@@ -191,6 +191,6 @@ int main()
     // }
 
     // cout << "Majority element is " << majorityElement2(nums) << endl;
-    cout << "Majority element is " << majorityElement3(nums) << endl;
+    // cout << "Majority element is " << majorityElement3(nums) << endl;
     return 0;
 }

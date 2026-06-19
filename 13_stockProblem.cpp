@@ -54,28 +54,39 @@ double myPow(double x, int n)
 // leetcode 121 - Best time to buy and sell stock
 int maxProfit(vector<int> &prices)
 {
-    int bestBuy = prices[0];
-    int maxProfit = 0;
-    for (int i = 1; i < prices.size(); i++)
-    {
+    // int bestBuy = prices[0];
+    // int maxProfit = 0;
+    // for (int i = 1; i < prices.size(); i++)
+    // {
 
-        if (bestBuy < prices[i])
-        {
-            maxProfit = max(maxProfit, prices[i] - bestBuy);
-        }
-        bestBuy = min(prices[i], bestBuy);
-        return bestBuy;
+    //     if (bestBuy < prices[i])
+    //     {
+    //         maxProfit = max(maxProfit, prices[i] - bestBuy);
+    //     }
+    //     bestBuy = min(prices[i], bestBuy);
+    //     return bestBuy;
+    // }
+    // return 0;
+    int mini = INT_MAX;
+    int profit = 0;
+
+    for (int price : prices)
+    {
+        mini = min(mini, price);            // best buying price so far
+        profit = max(profit, price - mini); // profit if sold today
     }
-    return 0;
+
+    return profit;
 }
 
 int main()
 {
-    cout << "The power of the given number using bruteforce method is " << myPowSimple(4, 2) << endl;
+    // cout << "The power of the given number using bruteforce method is " << myPowSimple(4, 2) << endl;
     // cout << "The power of the given number is " << myPow(2, 4) << endl;
 
-    vector<int> vec = {7, 1, 5, 3, 6, 4};
+    // vector<int> vec = {7, 1, 5, 3, 6, 4};
+    vector<int> vec = {1, 2};
 
-    // cout << "The maxProfit will be when the buyPrice is " << maxProfit(vec) << endl;
+    cout << "The maxProfit will be when the buyPrice is " << maxProfit(vec) << endl;
     return 0;
 }

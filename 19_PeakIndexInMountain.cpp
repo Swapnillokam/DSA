@@ -25,6 +25,8 @@ int peakElement1(vector<int> &v)
    while (st <= end)
    {
       int mid = st + (end - st) / 2;
+      // mid-1 and mid+1 -> may break at boundary conditions
+        // but mountains peak connot be at boundaries j=hence solyion is correct
       if (v[mid - 1] < v[mid] && v[mid] > v[mid + 1])
       {
          cout << "The peak element is " << v[mid] << endl;
